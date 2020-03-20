@@ -1,0 +1,205 @@
+﻿<!DOCTYPE html>
+
+<head>
+  <meta name="viewport"content="width=device-width,initial-scale=1">
+  <title>Smart Home</title>
+  <link
+    href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERAAAQAAAREAEAABAAABEQAQAAEAAAERABAAAQAAAREAEAABAREBEQAQAAEBEQERABAAAQERAREAEAERAAAAAAAREBEQAAAAAREAAREAAAAREAAAERAAAREAAAABEREREAAAAAAREREAAAAAAAARAAAAD//wAAwAMAAN8bAADfGwAA3xsAAN8bAADRGwAA0RsAANEbAAAf+AAAj/EAAMfjAADjxwAA8A8AAPgfAAD+fwAA"
+    rel="icon" type="image/x-icon" />
+</head>
+<link rel="stylesheet" href="style.css">
+<link href="bootstrap.min.css" rel="stylesheet">
+<script src="site.js"></script>
+<script src="jquery-3.4.1.min.js"></script>
+<script src="bootstrap.min.js"></script>
+ <script src="annyang.min.js"></script>
+<body>
+  <!-- <div id="Modal" class="modal">
+    <div class="modal-content">
+        <div class="row">
+            <p class="text"style="top:35%;">Авторизация успешна!</p>
+        </div>
+        <div class="row">
+            <p class="text"style="top:45%;">Добро пожаловать в систему Smart Home</p>
+        </div>
+        <div class="row">
+            <h1 class="version text"style="top:55%;">Версия: 1.1</h1>
+        </div>
+        <div class="row">
+            <div class="cssload-container text"style="top:60%">
+                <div class="cssload-loading"><i></i><i></i></div>
+            </div>
+        </div>
+    </div>
+</div> -->
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-light bg-primary">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand"><img width="60px" src="icon.png"alt="..."></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbar-list">
+          <ul class="nav navbar-nav mr-auto nav-pills">
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true"
+                aria-expanded="false">Модули</a>
+              <div class="dropdown-menu">
+                <a class="dropdown-item" id="control" href="#control-tab" role="tab" data-toggle="tab"
+                  aria-selected="false">Управление</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" id="devicesList" href="#devicesList-tab" role="tab" data-toggle="tab"
+                  aria-selected="false">Список устройств</a>
+              </div>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#notifi-tab" role="tab" aria-selected="true">Уведомения</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" data-toggle="tab" href="#about-tab" role="tab" aria-selected="true">О проекте</a>
+            </li>
+            <li class="nav-item" style="position: absolute;right:0;">
+              <a class="nav-link" id="admin-tab-id" href="#admin-tab" data-toggle="tab" role="tab" aria-selected="true"
+                onclick="this.classList.remove('active')">Настройки
+                <svg class="bi bi-gear-wide-connected" width="2em" height="2em" viewBox="0 0 20 20" fill="currentColor"
+                  xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd"
+                    d="M10.932 2.724c-.243-.97-1.621-.97-1.864 0l-.072.286a.96.96 0 01-1.622.434l-.205-.211c-.695-.72-1.889-.03-1.614.932l.08.283a.96.96 0 01-1.187 1.188l-.283-.081c-.962-.275-1.651.919-.932 1.614l.211.205a.96.96 0 01-.434 1.622l-.286.072c-.97.243-.97 1.621 0 1.864l.286.072a.96.96 0 01.434 1.622l-.211.205c-.72.695-.03 1.889.932 1.614l.283-.08a.96.96 0 011.188 1.187l-.081.283c-.275.962.919 1.651 1.614.932l.205-.211a.96.96 0 011.622.434l.072.286c.243.97 1.621.97 1.864 0l.072-.286a.96.96 0 011.622-.434l.205.211c.695.72 1.889.03 1.614-.932l-.08-.283a.96.96 0 011.187-1.188l.283.081c.962.275 1.651-.919.932-1.614l-.211-.205a.96.96 0 01.434-1.622l.286-.072c.97-.243.97-1.621 0-1.864l-.286-.072a.96.96 0 01-.434-1.622l.211-.205c.72-.695.03-1.889-.932-1.614l-.283.08a.96.96 0 01-1.188-1.187l.081-.283c.275-.962-.919-1.651-1.614-.932l-.205.211a.96.96 0 01-1.622-.434l-.072-.286zM10 15a5 5 0 100-10 5 5 0 000 10z"
+                    clip-rule="evenodd"></path>
+                  <path fill-rule="evenodd" d="M9.375 10L6.6 6.3l.8-.6 2.85 3.8H15v1h-4.75L7.4 14.3l-.8-.6L9.375 10z"
+                    clip-rule="evenodd"></path>
+                </svg></a>
+            </li>
+
+          </ul>
+        </div>
+      </div>
+
+    </nav>
+    <!-- <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+      <a class="navbar-brand" href="#">Smart Home</a>
+      <ul class="nav navbar-nav mr-auto nav-pills" role="tablist">
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Модули</a>
+          <div class="dropdown-menu">
+            <a class="dropdown-item" id="device-tab" href="#sockets-tab"role="tab"data-toggle="tab"aria-selected="false">Розетки</a>
+            <a class="dropdown-item" id="dat-tab" href="#sensors-tab"role="tab"data-toggle="tab"aria-selected="false">Датчики</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" id="control" href="#control-tab"role="tab"data-toggle="tab"aria-selected="false">Управление</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#notifi-tab" role="tab" aria-selected="true">Уведомения</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#about-tab" role="tab" aria-selected="true">О проекте</a>
+        </li>
+      </ul>
+      <ul class="navbar-nav justify-content-end">
+        <li class="nav-item">
+          <a class="nav-link " id="admin-tab-id" href="#admin-tab" data-toggle="tab" role="tab" aria-selected="true" onclick="this.classList.remove('active')">Настройки
+             <svg class="bi bi-gear-wide-connected" width="2em" height="2em"
+              viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd"
+                d="M10.932 2.724c-.243-.97-1.621-.97-1.864 0l-.072.286a.96.96 0 01-1.622.434l-.205-.211c-.695-.72-1.889-.03-1.614.932l.08.283a.96.96 0 01-1.187 1.188l-.283-.081c-.962-.275-1.651.919-.932 1.614l.211.205a.96.96 0 01-.434 1.622l-.286.072c-.97.243-.97 1.621 0 1.864l.286.072a.96.96 0 01.434 1.622l-.211.205c-.72.695-.03 1.889.932 1.614l.283-.08a.96.96 0 011.188 1.187l-.081.283c-.275.962.919 1.651 1.614.932l.205-.211a.96.96 0 011.622.434l.072.286c.243.97 1.621.97 1.864 0l.072-.286a.96.96 0 011.622-.434l.205.211c.695.72 1.889.03 1.614-.932l-.08-.283a.96.96 0 011.187-1.188l.283.081c.962.275 1.651-.919.932-1.614l-.211-.205a.96.96 0 01.434-1.622l.286-.072c.97-.243.97-1.621 0-1.864l-.286-.072a.96.96 0 01-.434-1.622l.211-.205c.72-.695.03-1.889-.932-1.614l-.283.08a.96.96 0 01-1.188-1.187l.081-.283c.275-.962-.919-1.651-1.614-.932l-.205.211a.96.96 0 01-1.622-.434l-.072-.286zM10 15a5 5 0 100-10 5 5 0 000 10z"
+                clip-rule="evenodd"></path>
+              <path fill-rule="evenodd" d="M9.375 10L6.6 6.3l.8-.6 2.85 3.8H15v1h-4.75L7.4 14.3l-.8-.6L9.375 10z"
+                clip-rule="evenodd"></path>
+            </svg></a>
+        </li>
+      </ul>
+    </nav> -->
+  </header>
+
+
+  <div class="container tab-content" id="myTabContent">
+    <div class="tab-pane fade" id="control-tab" role="tabpanel" aria-labelledby="control-tab">
+      <h8 class="center">Розетки</h8>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <h5 class="card-header">Около телевизора</h5>
+            <div class="card-body">
+              <button class="btn btn-primary" onclick="fetch('/switch');  if(this.innerText == 'Вкл'){this.innerText = 'Выкл';this.classList.add('btn-danger')}
+              else{this.innerText = 'Вкл';this.classList.remove('btn-danger')}">Вкл</button>
+                            <div class="indicator">
+                              <div class="temperature center">
+                                55.12&deg
+                              </div>
+                            </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-sm-4">
+          <div class="card">
+            <h5 class="card-header">Featured</h5>
+            <div class="card-body">
+              <h5 class="card-title">Специальный заголовок</h5>
+              <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
+              <a href="#" class="btn btn-primary">Переход куда-нибудь</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="tab-pane fade" id="devicesList-tab" role="tabpanel" aria-labelledby="contact-tab">
+      <h8 class="center">Список устройств</h8>
+      <table class="table">
+        <thead class="table-primary">
+          <tr>
+            <th scope="col">Id</th>
+            <th scope="col">Name</th>
+            <th scope="col">Ip</th>
+            <th scope="col">Type</th>
+            <th scope="col">Value</th>
+          </tr>
+        </thead>
+        <tbody id="deviceList">
+          <tr>
+            <td>Loading...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="admin-tab" role="tabpanel" aria-labelledby="dat-tab">
+      <h8 class="center">Настройки</h8>
+      <div id="settingsContainer">
+      </div>
+    </div>
+
+    <div class="tab-pane fade" id="notifi-tab" role="tabpanel" aria-labelledby="dat-tab">
+      <div class="codeContainer" id="containerNotifi">
+        <h6 class="center" style="color:green">-------Console-------</h7>
+        <h6 class="codeText">Loading...</h6>
+      </div>  
+    </div>
+
+
+    <div class="tab-pane fade" id="about-tab" role="tabpanel" aria-labelledby="admin-tab-id">
+      <h8 class="center">О проекте</h8>
+      <div class="row">
+        <div class="col-sm-4">
+          <div class="card">
+            <h5 class="card-header">Описание</h5>
+            <div class="card-body">
+              <h5 class="card-title">Выпускная квалификационная работа</h5>
+              <p class="card-text">Данный проект был разработан в рамках дипломной работы. Cсылка на проект в Git ниже</p>
+              <a href="https://github.com/alexmelk/FinalWork-Server-" class="btn btn-primary">Сcылка на GitHub</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <h10>2020, All rights reserved</h10>
+  </footer>
+
+</body>
+
+</html>

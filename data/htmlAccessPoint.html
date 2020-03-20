@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<head>
+  <meta name="viewport"content="width=device-width,initial-scale=1">
+  <title>Smart Home</title>
+  <link
+    href="data:image/x-icon;base64,AAABAAEAEBAQAAEABAAoAQAAFgAAACgAAAAQAAAAIAAAAAEABAAAAAAAgAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA/4QAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAERERERERAAAQAAAREAEAABAAABEQAQAAEAAAERABAAAQAAAREAEAABAREBEQAQAAEBEQERABAAAQERAREAEAERAAAAAAAREBEQAAAAAREAAREAAAAREAAAERAAAREAAAABEREREAAAAAAREREAAAAAAAARAAAAD//wAAwAMAAN8bAADfGwAA3xsAAN8bAADRGwAA0RsAANEbAAAf+AAAj/EAAMfjAADjxwAA8A8AAPgfAAD+fwAA"
+    rel="icon" type="image/x-icon" />
+</head>
+<link rel="stylesheet" href="style.css">
+<link href="bootstrap.min.css" rel="stylesheet">
+<script src="site.js"></script>
+<script src="jquery-3.4.1.min.js"></script>
+<script src="bootstrap.min.js"></script>
+<script src="moment.min.js"></script>
+<body>
+
+  <header>
+    <nav class="navbar navbar-expand-md navbar-light bg-primary">
+      <div class="container-fluid">
+        <a href="#" class="navbar-brand"><img width="60px" src="icon.png"alt="..."></a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar-list">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+  <div class="container tab-content" id="myTabContent">
+      <div class="codeContainer" id="containerNotifi">
+        <h6 class="center" style="color:green">-------Console-------</h7>
+      </div> 
+	  <br>
+
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <label class="input-group-text" for="inputGroupSelect01">UART speed b/s</label>
+        </div>	  
+	   <select class="custom-select" id="serialSpeed">
+        <option>300</option>
+		<option>1200</option>
+        <option>2400</option>
+		<option>4800</option>
+        <option>9600</option>
+		<option>14400</option>
+        <option>19200</option>
+		<option>28800</option>
+        <option>38400</option>
+		<option>57600</option>
+		<option>115200</option>
+	   </select>
+	  </div>
+	  
+      <div class="input-group mb-3">
+		<input id="usersMess" type="text" class="form-control" placeholder="Введите текст" aria-describedby="basic-addon2">
+		<div class="input-group-append">
+		<button id="sendToUART" class="btn btn-outline-secondary" type="button">Отправить</button>
+	  </div>
+</div>
+	
+  </div>
+  <footer>
+    <h10>2020, All rights reserved</h10>
+  </footer>
+
+</body>
+
+</html>
