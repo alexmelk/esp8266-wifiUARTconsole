@@ -9,6 +9,7 @@
 #include <ArduinoOTA.h>
 #include <ArduinoJson.hpp>
 #include <ArduinoJson.h>
+#include <ESP8266FtpServer.h>
 
 namespace shCore{
 

@@ -2,8 +2,11 @@
 var labels = [];
 var ctx;
 var chart;
-var maxY = 26;
-var minY = 0;
+var scaleY = 100;
+
+var maxY = 20;
+var minY = -20;
+
 var minTemp;
 var maxTemp;
 
@@ -11,24 +14,22 @@ var getUARTdataEv;
 var getUARTrawEv;
 var stopFlag = false;
 var n = 1966;
-
+var scaleX = 100;
+function onChangeTrackBarY()
+{
+	$("#trackBarValueY")[0].innerHTML = $("#trackbarY")[0].value;
+	scaleY = $("#trackbarY")[0].value;
+	this.updateChart();
+}
+function onChangeTrackBarX()
+{
+	$("#trackBarValueX")[0].innerHTML = $("#trackbarX")[0].value;
+	scaleX = $("#trackbarX")[0].value;
+}
 window.onload = async function()
 {
-	//append setting container
-	//let response = await fetch("/settings");
-	//var t = await response.text();
-	//console.log(t);
-	//$("#settingsContainer").append(t);
-	
-	//append wifiNetwork container
-	//response = await fetch("/getWifiList");
-	//t = await response.text();
-	//console.log(t);
-	//$("#inputGroupSelect01").empty();
-	//$("#inputGroupSelect01").append(t);
-	//var wifilist = setInterval(await getWiFiList,60000);
-	//setInterval(await getDevicesList,60000);
-	//setInterval(await getNotifi,40000);
+	$("#consoleLink")[0].click();
+
 	getUARTdataEv = setInterval(await getUARTdata,1000);
 
 	$("#sendToUART").on("click",function(){
@@ -55,9 +56,10 @@ async function getUARTdata()
 	if(t){$("#containerNotifi").append(t)};
 
 	let mas = t.match(/\d\d+/g);
+	var check = mas.shift();
+	if(check == 5000){
 	removeData();
-	mas.shift();
-	for(let i = 0; i < mas.length; i++)
+	for(let i = 0; i < (mas.length/100)*scaleX; i++)
 	{
 		data.push((mas[i]-n)/18.68);
 		labels.push(i);
@@ -65,6 +67,7 @@ async function getUARTdata()
 	
 	console.log(mas);
 	chart.update();
+}
 }
 
 function updateChart()
@@ -79,12 +82,35 @@ function updateChart()
 		data: {
 			labels: labels,
 			datasets: [{
-				label: 'График',
+				label: 'Graph',
 				backgroundColor: 'rgb(255, 99, 132)',
 				borderColor: 'rgb(255, 99, 132)',
 				data: data,
 				fill: false,
 			}],
+		},options: {
+			scales: {
+				xAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Counter'
+					}
+				}],
+				yAxes: [{
+					display: true,
+					scaleLabel: {
+						display: true,
+						labelString: 'Value'
+					},
+					ticks:
+					{
+						min:(this.minY/100)*scaleY,
+						max:(this.maxY/100)*scaleY,
+						stepSize:(Math.abs((this.minY/100)*scaleY)+Math.abs((this.maxY/100)*scaleY))/10
+					}
+				}]
+			}
 		}
 	});
 }

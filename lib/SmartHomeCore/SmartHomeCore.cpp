@@ -16,8 +16,9 @@ int _jsonLength	               = 2048;
 String _otaHostName            = "SmartHomeCore";
 const char* www_username       = "admin";
 const char* www_password       = "admin";
-float version                  = 1.3;
+float version                  = 1.4;
 
+FtpServer ftp;
 DynamicJsonDocument json(_jsonLength);
 IPAddress apIP(77, 77, 77, 77);
 IPAddress subnet(255, 255, 255, 0);
@@ -54,12 +55,17 @@ void shCore::coreInit(void) {
 
 	if (!openFile("devices.conf")) { createOrErase("devices.conf", ""); Serial.println("devices.conf"); };
 
-	Serial.println("starting:");
+	Serial.println("System starting:");
+
+	ftp.begin(www_username,www_password);
+
+	Serial.println("FTP enabled.");
 
 }
 
 void shCore::coreHandle(void) {
   _server.handleClient();//ждём клиентов
+  ftp.handleFTP(); 
 	String str = tryToReceive();
 	if (str.length() != 0)
 	{

@@ -3,6 +3,7 @@
 
 using namespace shCore;
 String uartData = "";
+int buffLength = 4096;
 
 void getUARTdata()
 {
@@ -34,6 +35,9 @@ void loop() {
   coreHandle();
   if(Serial.available())
   {
-    uartData += String() + "<h6 class='codeText'>" + Serial.readString() + "</h6>";
+    if(uartData.length()<buffLength){
+      uartData += String() + "<h6 class='codeText'>" + Serial.readString() + "</h6>";
+    }
+    else {Serial.readString();}
   }
 }
