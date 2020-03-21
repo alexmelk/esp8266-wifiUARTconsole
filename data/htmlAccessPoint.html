@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 
 <head>
   <meta name="viewport"content="width=device-width,initial-scale=1">
@@ -13,6 +13,7 @@
 <script src="jquery-3.4.1.min.js"></script>
 <script src="bootstrap.min.js"></script>
 <script src="moment.min.js"></script>
+<script src="Chart.bundle.min.js"></script>
 <body>
 
   <header>
@@ -24,10 +25,22 @@
         </button>
         </div>
       </div>
+      <div class="collapse navbar-collapse" id="navbar-list">
+        <ul class="nav navbar-nav mr-auto nav-pills">
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#uartToGraph" role="tab" aria-selected="true" id="graph-btn">График</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" data-toggle="tab" href="#consoleTab" role="tab" aria-selected="true"id="console-btn">Консоль</a>
+          </li>
+        </ul>
+      </div>
     </nav>
   </header>
-  
+
   <div class="container tab-content" id="myTabContent">
+
+  <div class="tab-pane fade" role="tabpanel" id="consoleTab">
       <div class="codeContainer" id="containerNotifi">
         <h6 class="center" style="color:green">-------Console-------</h7>
       </div> 
@@ -52,13 +65,27 @@
 	   </select>
 	  </div>
 	  
-      <div class="input-group mb-3">
+    <div class="input-group mb-3">
 		<input id="usersMess" type="text" class="form-control" placeholder="Введите текст" aria-describedby="basic-addon2">
 		<div class="input-group-append">
 		<button id="sendToUART" class="btn btn-outline-secondary" type="button">Отправить</button>
 	  </div>
 </div>
-	
+</div>
+<div class="tab-pane fade" role="tabpanel" id="uartToGraph">
+  <div class="center">
+      <canvas id="myChart" height="500" width="1000"></canvas>
+  </div>
+  <div class="center">
+    <div style="margin-left: 10px;">
+        <button class="btn btn-primary"onclick="removeData()">Очистить</button>
+        <!-- <button class="btn btn-primary" onclick="scaleUp()">Масштаб -</button>
+        <button class="btn btn-primary" onclick="scaleDown()">Масштаб +</button> -->
+        <button id="Stop" class="btn btn-primary" onclick="toogle(this)">Останов.</button>
+    </div>
+</div>
+</div>
+
   </div>
   <footer>
     <h10>2020, All rights reserved</h10>
